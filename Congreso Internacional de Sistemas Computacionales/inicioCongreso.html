@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="inicio.css">
+
+    <title>información del Participante - Congreso Internacional de Sistemas Computacionales</title>
+    <script>
+        function validarFormulario() {
+            var nombre = document.getElementById("nombre").value;
+            var apellidoPaterno = document.getElementById("apellidoPaterno").value;
+            var apellidoMaterno = document.getElementById("apellidoMaterno").value;
+            var correo = document.getElementById("correo").value;
+            var telefono = document.getElementById("telefono").value;
+            var pais = document.getElementById("pais").value;
+            var estado = document.getElementById("estado").value;
+            var institucion = document.getElementById("institucion").value;
+            var requiereComprobante = document.getElementById("requiereComprobante").checked;
+
+            if (nombre === "") {
+                alert("El campo Nombre es obligatorio.");
+                return false;
+            }
+            if (nombre === nombre.toUpperCase()) {
+                alert("No escriba solo con mayúsculas en el campo Nombre.");
+                return false;
+            }
+
+            if (apellidoPaterno === "") {
+                alert("El campo Apellido Paterno es obligatorio.");
+                return false;
+            }
+            if (apellidoPaterno === apellidoPaterno.toUpperCase()) {
+                alert("No escriba solo con mayúsculas en el campo Apellido Paterno.");
+                return false;
+            }
+
+            if (apellidoMaterno === "") {
+                alert("El campo Apellido Materno es obligatorio.");
+                return false;
+            }
+            if (apellidoMaterno === apellidoMaterno.toUpperCase()) {
+                alert("No escriba solo con mayúsculas en el campo Apellido Materno.");
+                return false;
+            }
+
+            if (correo === "") {
+                alert("El campo Correo Electrónico es obligatorio.");
+                return false;
+            }
+            // Agregar una validación de formato de correo electrónico si es necesario.
+
+            if (telefono === "") {
+                alert("El campo Teléfono es obligatorio.");
+                return false;
+            }
+            // Agregar una validación de formato de teléfono si es necesario.
+
+            if (pais === "") {
+                alert("Debe seleccionar un País.");
+                return false;
+            }
+
+            if (requiereComprobante && document.getElementById("razonSocial").value === "") {
+                alert("Si requiere comprobante fiscal, proporcione la Razón Social.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Inicio de Sesión - Congreso Internacional de Sistemas Computacionales</h1>
+    <form onsubmit="return validarFormulario()">
+        <label for="nombre">Nombre(s):</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br>
+
+        <label for="apellidoPaterno">Apellido Paterno:</label>
+        <input type="text" id="apellidoPaterno" name="apellidoPaterno" required>
+        <br>
+
+        <label for="apellidoMaterno">Apellido Materno:</label>
+        <input type="text" id="apellidoMaterno" name="apellidoMaterno" required>
+        <br>
+
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo" required>
+        <br>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" required>
+        <br>
+
+        <label for="pais">País:</label>
+        <select id="pais" name="pais" required>
+            <option value="">Seleccione un país</option>
+            <option value="Mexico">México</option>
+            <!-- Agregar más países aquí -->
+        </select>
+        <br>
+
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+            <option value="">Seleccione un estado</option>
+            <!-- Agregar estados dependiendo del país seleccionado con JavaScript -->
+        </select>
+        <br>
+
+        <label for="institucion">Institución:</label>
+        <select id="institucion" name="institucion" required>
+            <option value="">Seleccione una institución</option>
+            <option value="ITS San Luis Potosí">Instituto Tecnológico Superior de San Luis Potosí</option>
+            <option value="Otra Institución">Otra Institución</option>
+            <!-- Agregar más instituciones aquí -->
+        </select>
+        <br>
+        <label for="requiereComprobante">¿Requiere comprobante fiscal?</label>
+        <div>
+            <input type="radio" id="requiereComprobanteSi" name="requiereComprobante" value="si">
+            <label for="requiereComprobanteSi">Sí</label>
+        </div>
+        <div>
+            <input type="radio" id="requiereComprobanteNo" name="requiereComprobante" value="no">
+            <label for="requiereComprobanteNo">No</label>
+        </div>
+
+        <br>
+
+        <label for="razonSocial">Razón Social:</label>
+        <input type="text" id="razonSocial" name="razonSocial">
+        <br>
+
+        <br>
+
+        <label for="razonSocial">RFC:</label>
+        <input type="text" id="razonSocial" name="razonSocial">
+        <br>
+        <h1>Ingresa tu Dirección Fiscal</h1>
+
+        <form id="address-form">
+            <label for="company-name">Nombre de la empresa:</label>
+            <input type="text" id="company-name" name="company-name" required><br>
+    
+            <label for="address">Dirección:</label>
+            <input type="text" id="address" name="address" required><br>
+    
+            <label for="city">Ciudad:</label>
+            <input type="text" id="city" name="city" required><br>
+    
+            <label for="postal-code">Código Postal:</label>
+            <input type="text" id="postal-code" name="postal-code" required><br>
+    
+            <label for="country">País:</label>
+            <input type="text" id="country" name="country" required><br>
+        </form>
+
+        <form id="registroForm" action="procesar_registro.php" method="post">
+            <!-- ... (otros campos) ... -->
+            <button type="submit">Enviar datos y obtener hoja de ayuda</button>
+        </form>
+        
+    </form>
+</body>
+</html>
